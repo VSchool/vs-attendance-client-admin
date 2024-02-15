@@ -9,6 +9,6 @@ jobs:
         with:
           node-version: "20"
       - run: npm install
-      - run: npm run deploy == ./  --token ${{ secrets.SURGE_TOKEN }}
+      - run: npm run deploy -- ./  --token ${{ secrets.SURGE_TOKEN }}
 
 
