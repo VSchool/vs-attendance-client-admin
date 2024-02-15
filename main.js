@@ -1,5 +1,8 @@
 const ATTENDANCE_API_BASE_URL = location.origin === 'http://localhost:5500' ? 'http://localhost:8080' : 'https://vs-attendance-api.onrender.com';
 const QR_CODE_ID = 'qrcode';
+const INTERVAL_DURATION = 60 * 1000;
+
+const qrCodeContainer = document.querySelector('section');
 
 const getQRCodeDataUrl = () => fetch(`${ATTENDANCE_API_BASE_URL}/api/qr-code/generate`).then(res => res.json()).then(data => data.dataUrl)
 const createQrCodeImg = (dataUrl) => {
@@ -21,13 +24,12 @@ const updateQRCode = async () => {
     qrCodeContainer.appendChild(img)
 }
 
-const qrCodeContainer = document.querySelector('section');
 
 window.addEventListener('load', () => {
     updateQRCode();
     const interval = setInterval(async () => {
         updateQRCode()
-    }, (60 * 1000));
+    }, (INTERVAL_DURATION));
 
     window.addEventListener('close', () => {
         clearInterval(interval)
