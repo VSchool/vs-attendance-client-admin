@@ -9,25 +9,44 @@ main {
     justify-content: center;
     align-items: center;
     height: 100dvh;
-    padding: 16px;
-    gap: 12px;
+    padding: 32px;
+    gap: 16px;
 }
 
 header {
     display: flex;
     justify-content: center;
+
     img {
-        width: 320px
+        width: 200px
     }
 }
 
 section {
     img {
-        height: 500px;
+        height: 280px;
     }
 }
 
 footer p {
     text-align: center;
-    font-size: 54px;
+    font-size: 28px;
+}
+
+@media (min-width: 600px) {
+    header {
+        img {
+            width: 320px
+        }
+    }
+
+    section {
+        img {
+            height: 500px;
+        }
+    }
+
+    footer p {
+        font-size: 54px;
+    }
 }

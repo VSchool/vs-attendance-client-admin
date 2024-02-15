@@ -3,7 +3,7 @@
     "short_name": "VS Attendance Client Admin",
     "icons": [
         {
-            "src": "thumbnail.png",
+            "src": "/assets/thumbnail.png",
             "sizes": "192x192",
             "type": "image/png"
         }
