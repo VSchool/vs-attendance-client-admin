@@ -1,0 +1,16 @@
+{
+    "name": "vs-attendance-client-admin",
+    "image": "mcr.microsoft.com/devcontainers/javascript-node",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "github.vscode-github-actions",
+          "GitHub.vscode-pull-request-github"
+        ]
+      }
+    },
+    "features": {
+      "ghcr.io/devcontainers/features/github-cli": {}
+    }
+  }
+  

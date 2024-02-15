@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    padding: 16px;
+    gap: 12px;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    img {
+        width: 320px
+    }
+}
+
+section {
+    img {
+        height: 500px;
+    }
+}
+
+footer p {
+    text-align: center;
+    font-size: 54px;
+}

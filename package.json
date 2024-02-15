@@ -1,0 +1,19 @@
+{
+  "name": "vs-attendance-client-admin",
+  "version": "1.0.0",
+  "description": "`Under Construction`",
+  "main": "main.js",
+  "scripts": {
+    "deploy": "surge"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bbgrabbag/vs-attendance-client-admin.git"
+  },
+  "author": "Ben Turner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bbgrabbag/vs-attendance-client-admin/issues"
+  },
+  "homepage": "https://github.com/bbgrabbag/vs-attendance-client-admin#readme"
+}

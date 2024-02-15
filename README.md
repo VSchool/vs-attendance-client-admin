@@ -1,1 +1,3 @@
-# vs-attendance-client-admin
+# VS Attendance Client (Admin)
+
+`Under Construction`
