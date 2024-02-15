@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/bbgrabbag/vs-attendance-client-admin/issues"
   },
-  "homepage": "https://github.com/bbgrabbag/vs-attendance-client-admin#readme"
+  "homepage": "https://github.com/bbgrabbag/vs-attendance-client-admin#readme",
+  "dependencies": {
+    "surge": "^0.23.1"
+  }
 }

@@ -1,7 +1,7 @@
-name: run-unit-tests
+name: deploy-app
 on: [push]
 jobs:
-  run-tests:
+  publish:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -9,4 +9,6 @@ jobs:
         with:
           node-version: "20"
       - run: npm install
-      - run: npm run deploy
+      - run: npm run deploy == ./  --token ${{ secrets.SURGE_TOKEN }}
+
+
