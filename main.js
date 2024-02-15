@@ -1,5 +1,5 @@
 //  retrieve the access token
-const ATTENDANCE_API_BASE_URL = 'https://vs-attendance-api.onrender.com/';
+const ATTENDANCE_API_BASE_URL = 'https://vs-attendance-api.onrender.com';
 const QR_CODE_ID = 'qrcode';
 
 const getQRCodeDataUrl = () => fetch(`${ATTENDANCE_API_BASE_URL}/api/qr-code/generate`).then(res => res.json()).then(data => data.dataUrl)
