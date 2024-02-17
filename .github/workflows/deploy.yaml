@@ -1,4 +1,4 @@
-name: deploy-app
+name: deploy-app-prod
 on: [push]
 jobs:
   publish:

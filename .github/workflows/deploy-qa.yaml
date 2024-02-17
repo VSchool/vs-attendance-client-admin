@@ -1,4 +1,4 @@
-name: deploy-app
+name: deploy-app-qa
 on: [push]
 jobs:
   publish:
