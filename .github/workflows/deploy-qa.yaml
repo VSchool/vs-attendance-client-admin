@@ -1,0 +1,14 @@
+name: deploy-app
+on: [push]
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+      - run: npm install
+      - run: npm run deploy -- ./ --domain https://qa.vschool-client-admin.surge.sh  --token ${{ secrets.SURGE_TOKEN }}
+
+
