@@ -1,5 +1,8 @@
 name: deploy-app-prod
-on: [push]
+on: 
+  push:
+    tags:
+      - 'release-v[0-9]+.[0-9]+.[0-9]+'
 jobs:
   publish:
     runs-on: ubuntu-latest
