@@ -15,7 +15,7 @@ main {
 
 
 #logo {
-    width: 8rem;
+    width: 10rem;
 }
 
 section {
@@ -24,10 +24,10 @@ section {
 }
 
 #qrcode {
-    width: 80%;
+    width: 85%;
 }
 
 #label {
-    font-size: 1rem;
+    font-size: 1.5rem;
     text-align: center;
 }
