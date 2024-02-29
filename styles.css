@@ -5,49 +5,29 @@
 }
 
 main {
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    height: 100dvh;
-    padding: 32px;
+    justify-content: center;
     gap: 16px;
 }
 
-header {
-    display: flex;
-    justify-content: center;
 
-    img {
-        width: 200px
-    }
+#logo {
+    width: 8rem;
 }
 
 section {
-    img {
-        height: 280px;
-    }
+    display: flex;
+    justify-content: center;
 }
 
-footer p {
+#qrcode {
+    width: 80%;
+}
+
+#label {
+    font-size: 1rem;
     text-align: center;
-    font-size: 28px;
-}
-
-@media (min-width: 600px) {
-    header {
-        img {
-            width: 320px
-        }
-    }
-
-    section {
-        img {
-            height: 500px;
-        }
-    }
-
-    footer p {
-        font-size: 54px;
-    }
 }
