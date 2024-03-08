@@ -44,7 +44,7 @@ const renderError = (err) => {
 const renderLoading = () => {
     const p = document.createElement('p');
     p.id = LOADING_ID;
-    p.innerText = 'Verifying...'
+    p.innerText = 'Verifying...';
     qrCodeContainer.appendChild(p);
 }
 
@@ -86,6 +86,7 @@ const handleLocationData = config => async data => {
 const handleLocationDataError = err => {
     console.error(err)
     removeEl(LOADING_ID);
+    removeEl(ERROR_ID);
     renderError(err.message)
 }
 
@@ -97,9 +98,15 @@ const getConfig = async () => {
 }
 
 const onPageLoad = async () => {
-    const config = await getConfig();
-    renderLoading();
-    startQRCodeGenerationCycle(config);
+    try {
+        renderLoading();
+        const config = await getConfig();
+        startQRCodeGenerationCycle(config);
+    } catch(err){
+        console.error(err);
+        removeEl(LOADING_ID)
+        renderError('There was a problem retrieving configuration settings');
+    }
 }
 
 window.addEventListener('load', onPageLoad)
