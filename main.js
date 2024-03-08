@@ -1,10 +1,9 @@
 /**************************************************************************** */
-const ATTENDANCE_API_BASE_URL = location.origin === 'http://127.0.0.1:5500'
+const ATTENDANCE_API_BASE_URL = (location.origin === 'http://127.0.0.1:5500' || location.origin === 'https://talented-egret-safely.ngrok-free.app')
     ? 'http://localhost:8080' :
     location.origin === 'https://qa-vschool-client-admin.surge.sh' ?
         'https://qa-vs-attendance-api.onrender.com' :
         'https://vs-attendance-api.onrender.com';
-const LOCATION_API_BASE_URL = 'http://ip-api.com/json';
 const QR_CODE_ID = 'qrcode';
 const ERROR_ID = 'error';
 const LOADING_ID = 'loading';
@@ -48,47 +47,28 @@ const renderLoading = () => {
     qrCodeContainer.appendChild(p);
 }
 
-const validateCoords = config => (coords) => {
-    const getDistance = (from, to) => Math.abs(from - to)
-    return [
-        getDistance(coords.lat, config.latitude),
-        getDistance(coords.lon, config.longitude),
-    ].every(distance => distance <= config.maxRange)
-}
-
-const getLocation = () => {
-    return fetch(LOCATION_API_BASE_URL).then(res => res.json())
-}
-
 const startQRCodeGenerationCycle = (config) => {
     let interval;
-    const startInterval = () => getLocation()
-        .then(handleLocationData(config))
-        .catch(handleLocationDataError)
-        .finally(() => {
+    const startInterval = () => updateQRCode()
+        .then(() => {
+            removeEl(LOADING_ID);
+            removeEl(ERROR_ID);
             if (interval) clearInterval(interval);
             interval = setInterval(startInterval, config.interval);
         })
+        .catch((err => {
+            console.error(err)
+            removeEl(LOADING_ID);
+            removeEl(ERROR_ID);
+            renderError(err.message);
+            clearInterval(interval);
+        }))
     startInterval();
     window.addEventListener('close', () => {
         interval = clearInterval(interval)
     })
 }
 
-const handleLocationData = config => async data => {
-    if (data.status !== 'success') throw Error('Unable to retrieve location');
-    if (!validateCoords(config)({ lat: data.lat, lon: data.lon })) throw Error('Invalid location')
-    removeEl(ERROR_ID);
-    removeEl(LOADING_ID);
-    await updateQRCode();
-}
-
-const handleLocationDataError = err => {
-    console.error(err)
-    removeEl(LOADING_ID);
-    removeEl(ERROR_ID);
-    renderError(err.message)
-}
 
 const getConfig = async () => {
     const config = await fetch(`${ATTENDANCE_API_BASE_URL}/api/qr-code/config`)
@@ -102,7 +82,7 @@ const onPageLoad = async () => {
         renderLoading();
         const config = await getConfig();
         startQRCodeGenerationCycle(config);
-    } catch(err){
+    } catch (err) {
         console.error(err);
         removeEl(LOADING_ID)
         renderError('There was a problem retrieving configuration settings');

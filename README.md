@@ -10,7 +10,8 @@ Web app for allowing students to clock in/out of campus using a QR code. Every 5
 # install dependencies
 npm i
 
-# If using VS Code, simply open repository in a dev container and run using Live Server. Otherwise use any dev server extension/library to serve /index.html
+# run dev server (default ngrok tunnel points to port 5500, which is LiveServer's default port). If using VS Code, simply open repository in a dev container and run using LiveServer. Otherwise use any dev server extension/library to serve /index.html
+npm run dev
 ```
 
 ### Deployment

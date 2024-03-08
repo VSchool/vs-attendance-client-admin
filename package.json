@@ -4,7 +4,8 @@
   "description": "`Under Construction`",
   "main": "main.js",
   "scripts": {
-    "deploy": "surge"
+    "deploy": "surge",
+    "dev": "ngrok http --domain=talented-egret-safely.ngrok-free.app 5500"
   },
   "repository": {
     "type": "git",
