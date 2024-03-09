@@ -12,7 +12,12 @@ const LOADING_ID = 'loading';
 
 const qrCodeContainer = document.querySelector('section');
 
-const getQRCodeDataUrl = () => fetch(`${ATTENDANCE_API_BASE_URL}/api/qr-code/generate`).then(res => res.json()).then(data => data.dataUrl)
+const getQRCodeDataUrl = () => fetch(`${ATTENDANCE_API_BASE_URL}/api/qr-code/generate`)
+    .then(res => res.json())
+    .then(data => {
+        if(!data.success) throw Error(data.message);
+        return data.dataUrl
+    })
 const createQrCodeImg = (dataUrl) => {
     const img = document.createElement('img');
     img.setAttribute('src', dataUrl);
